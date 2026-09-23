@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ගොවි පොළ — Govi Pola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- Firebase (backend for shared listings, photos, and anonymous user id) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">🐄</div>
+    <div class="brand-text">
+      <div class="name" id="brandNameEl">ගොවි පොළ — Govi Pola</div>
+      <div class="tag" id="taglineEl">Saththu • Kama • Nishpadana — Govi Pola</div>
+    </div>
+  </div>
+  <div style="display:flex; gap:8px;">
+    <select class="lang-select" id="langSelect" title="Language / භාෂාව / மொழி">
+      <option value="si">සිංහල</option>
+      <option value="en">English</option>
+      <option value="ta">தமிழ்</option>
+    </select>
+    <button class="theme-toggle" id="themeToggle" title="Theme">🌓</button>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<div class="bottom-nav">
+  <button class="nav-btn on" data-view="browse"><span class="ic">🔎</span><span id="navBrowseLbl">Bala Ganna</span></button>
+  <button class="nav-btn" data-view="post"><span class="ic">➕</span><span id="navPostLbl">Ad Ekak Danna</span></button>
+  <button class="nav-btn" data-view="mine"><span class="ic">🗂️</span><span id="navMineLbl">Mage Ads</span></button>
+</div>
+
+<div class="overlay" id="detailOverlay">
+  <div class="sheet" id="detailSheet"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
