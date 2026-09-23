@@ -1,17 +1,16 @@
 /* ============ Data / constants ============ */
 const CATEGORIES = {
-  saththu: { label: "සත්තු", en: "Saththu (Animals)", emoji: "🐄",
+  saththu: { label: "සත්තු", en: "Saththu (Animals)",
     sub: ["Harak (හරක්/එළදෙන)","Eluwo (එළුවෝ)","Kukullan (කුකුළන්)","Uro (ඌරු)","Malu (මාළු)","Meemas (මීමැස්සන්)"] },
-  kama: { label: "සත්ව ආහාර", en: "Feed", emoji: "🌾",
+  kama: { label: "සත්ව ආහාර", en: "Feed", 
     sub: ["Thanacola","Bada Iringu","Kukulu Kama","Vitamin / Supplements"] },
-  nishpadana: { label: "නිෂ්පාදන", en: "Nishpadana (Produce)", emoji: "🥛",
+  nishpadana: { label: "නිෂ්පාදන", en: "Nishpadana (Produce)",
     sub: ["Kiri (කිරි)","Biththara (බිත්තර)","Mee Pani (මී පැණි)","Pohora (පොහොර)"] }
 };
 const DISTRICTS = ["Colombo","Gampaha","Kalutara","Kandy","Matale","Nuwara Eliya","Galle","Matara",
   "Hambantota","Jaffna","Kilinochchi","Mannar","Vavuniya","Mullaitivu","Batticaloa","Ampara",
   "Trincomalee","Kurunegala","Puttalam","Anuradhapura","Polonnaruwa","Badulla","Monaragala",
   "Ratnapura","Kegalle"];
-const CAT_EMOJI = { saththu:"🐄", kama:"🌾", nishpadana:"🥛" };
 
 const CAT_LABEL_I18N = {
   saththu: { si: "සත්තු", en: "Animals", ta: "கால்நடைகள்" },
@@ -70,15 +69,15 @@ const STRINGS = {
   postNameLabel: { si: "ඔයාගේ නම", en: "Your name", ta: "உங்கள் பெயர்" },
   postNamePh: { si: "නම", en: "Name", ta: "பெயர்" },
   postPhoneLabel: { si: "දුරකථන අංකය", en: "Phone number", ta: "தொலைபேசி எண்" },
-  publishBtn: { si: "📤 පළ කරන්න (Publish)", en: "📤 Publish", ta: "📤 வெளியிடு" },
+  publishBtn: { si: "පළ කරන්න (Publish)", en: "Publish", ta: " வெளியிடு" },
   postCatPrompt: { si: "මුලින්ම category එකක් තෝරන්න", en: "Pick a category first", ta: "முதலில் ஒரு பிரிவைத் தேர்ந்தெடுக்கவும்" },
-  dbUnavailablePost: { si: "⚠️ Marketplace එකට දැනට connect වෙන්න බැහැ.", en: "⚠️ Can't connect to the marketplace right now.", ta: "⚠️ தற்போது சந்தையுடன் இணைக்க முடியவில்லை." },
-  waitPhotos: { si: "⏳ Photos upload වෙනකන් ඉන්න...", en: "⏳ Wait for photos to finish uploading...", ta: "⏳ புகைப்படங்கள் பதிவேற்றம் முடியும் வரை காத்திருக்கவும்..." },
-  photosTooBig: { si: "⚠️ Photos ටික ලොකුයි — එකක් අයින් කරලා try කරන්න.", en: "⚠️ Photos are too large — remove one and try again.", ta: "⚠️ புகைப்படங்கள் பெரியவை — ஒன்றை நீக்கி முயற்சிக்கவும்." },
+  dbUnavailablePost: { si: " Marketplace එකට දැනට connect වෙන්න බැහැ.", en: " Can't connect to the marketplace right now.", ta: " தற்போது சந்தையுடன் இணைக்க முடியவில்லை." },
+  waitPhotos: { si: "Photos upload වෙනකන් ඉන්න...", en: "Wait for photos to finish uploading...", ta: "புகைப்படங்கள் பதிவேற்றம் முடியும் வரை காத்திருக்கவும்..." },
+  photosTooBig: { si: "Photos ටික ලොකුයි — එකක් අයින් කරලා try කරන්න.", en: "Photos are too large — remove one and try again.", ta: "புகைப்படங்கள் பெரியவை — ஒன்றை நீக்கி முயற்சிக்கவும்." },
   publishing: { si: "පළ කරමින්...", en: "Publishing...", ta: "வெளியிடப்படுகிறது..." },
-  published: { si: "✅ Ad එක පළ කළා!", en: "✅ Ad published!", ta: "✅ விளம்பரம் வெளியிடப்பட்டது!" },
-  publishToast: { si: "Ad එක සාර්ථකව පළ කළා 🎉", en: "Ad published successfully 🎉", ta: "விளம்பரம் வெற்றிகரமாக வெளியிடப்பட்டது 🎉" },
-  publishFailed: { si: "⚠️ Publish වුනේ නෑ — try again.", en: "⚠️ Publish failed — try again.", ta: "⚠️ வெளியிட முடியவில்லை — மீண்டும் முயற்சிக்கவும்." },
+  published: { si: " Ad එක පළ කළා!", en: , Ad published!", ta: "விளம்பரம் வெளியிடப்பட்டது!" },
+  publishToast: { si: "Ad එක සාර්ථකව පළ කළා ", en: "Ad published successfully ", ta: "விளம்பரம் வெற்றிகரமாக வெளியிடப்பட்டது " },
+  publishFailed: { si: " Publish වුනේ නෑ — try again.", en: " Publish failed — try again.", ta: "வெளியிட முடியவில்லை — மீண்டும் முயற்சிக்கவும்." },
   connectFail: { si: "Marketplace එකට connect වෙලා නෑ.", en: "Not connected to the marketplace.", ta: "சந்தையுடன் இணைக்கப்படவில்லை." },
   authLoginTitle: { si: "Login වෙන්න", en: "Log in", ta: "உள்நுழையவும்" },
   authSignupTitle: { si: "Account එකක් හදන්න", en: "Create an account", ta: "கணக்கு உருவாக்கவும்" },
@@ -95,8 +94,8 @@ const STRINGS = {
   authResendBtn: { si: "නැවත එවන්න", en: "Resend", ta: "மீண்டும் அனுப்பு" },
   authLogout: { si: "Logout", en: "Logout", ta: "வெளியேறு" },
   authLoggedOut: { si: "Logout වුනා.", en: "Logged out.", ta: "வெளியேறியது." },
-  verifyEmailSent: { si: "✅ Verification email එක evwa — inbox check karanna.", en: "✅ Verification email sent — check your inbox.", ta: "✅ உறுதிப்படுத்தல் மின்னஞ்சல் அனுப்பப்பட்டது — inbox-ஐ சரிபார்க்கவும்." },
-  resetSent: { si: "✅ Password reset email එක evwa.", en: "✅ Password reset email sent.", ta: "✅ கடவுச்சொல் மீட்டமைப்பு மின்னஞ்சல் அனுப்பப்பட்டது." },
+  verifyEmailSent: { si: " Verification email එක evwa — inbox check karanna.", en: " Verification email sent — check your inbox.", ta: "உறுதிப்படுத்தல் மின்னஞ்சல் அனுப்பப்பட்டது — inbox-ஐ சரிபார்க்கவும்." },
+  resetSent: { si: " Password reset email එක evwa.", en: " Password reset email sent.", ta: "கடவுச்சொல் மீட்டமைப்பு மின்னஞ்சல் அனுப்பப்பட்டது." },
   authErrGeneric: { si: "යමක් වැරදුනා, try again.", en: "Something went wrong, try again.", ta: "ஏதோ தவறு நடந்தது, மீண்டும் முயற்சிக்கவும்." },
   authErrInUse: { si: "මේ email එක already use වෙනවා — Login වෙන්න try කරන්න.", en: "This email is already in use — try logging in.", ta: "இந்த மின்னஞ்சல் ஏற்கனவே பயன்பாட்டில் உள்ளது — உள்நுழைய முயற்சிக்கவும்." },
   authErrInvalidEmail: { si: "Email ලිපිනය හරි නෑ.", en: "That email address isn't valid.", ta: "மின்னஞ்சல் முகவரி தவறானது." },
@@ -110,11 +109,11 @@ const STRINGS = {
   mineHeading: { si: (n) => `ඔයා දාපු ads (${n})`, en: (n) => `Your ads (${n})`, ta: (n) => `நீங்கள் இட்ட விளம்பரங்கள் (${n})` },
   mineEmptyTitle: { si: "ඔයා තාම ad එකක් දාලා නෑ", en: "You haven't posted an ad yet", ta: "நீங்கள் இன்னும் விளம்பரம் இடவில்லை" },
   mineEmptyDesc: { si: "\"Ad Ekak Danna\" ගිහින් ඔයාගේ පළමු ad එක දාන්න!", en: "Go to \"Post Ad\" and add your first one!", ta: "\"விளம்பரம் இடு\" சென்று உங்கள் முதல் விளம்பரத்தை இடுங்கள்!" },
-  mineDeleteBtn: { si: "🗑️ Ad එක අයින් කරන්න", en: "🗑️ Remove ad", ta: "🗑️ விளம்பரத்தை அகற்று" },
+  mineDeleteBtn: { si: " Ad එක අයින් කරන්න", en: " Remove ad", ta: " விளம்பரத்தை அகற்று" },
   mineDeleteConfirm: { si: "මේ ad එක delete කරන්නද?", en: "Delete this ad?", ta: "இந்த விளம்பரத்தை நீக்கவா?" },
   mineDeleted: { si: "Ad එක අයින් කළා.", en: "Ad removed.", ta: "விளம்பரம் அகற்றப்பட்டது." },
   mineDeleteFailed: { si: "Delete කරන්න බැරි වුනා.", en: "Couldn't delete it.", ta: "நீக்க முடியவில்லை." },
-  detailCall: { si: "📞 කතා කරන්න", en: "📞 Call", ta: "📞 அழைக்கவும்" },
+  detailCall: { si: "කතා කරන්න", en: " Call", ta: " அழைக்கவும்" },
   detailWa: { si: "💬 WhatsApp", en: "💬 WhatsApp", ta: "💬 WhatsApp" },
   priceNegotiable: { si: "කථා කර ගත හැක (Negotiable)", en: "Negotiable", ta: "பேசி முடிவு செய்யலாம்" },
   priceNone: { si: "මිල සඳහන් නැත", en: "Price not listed", ta: "விலை குறிப்பிடப்படவில்லை" },
@@ -455,11 +454,11 @@ function renderBrowse() {
   `;
 
   if (!dbReady) {
-    html += `<div class="empty"><div class="big">⏳</div><h3>${t('loadingTitle')}</h3><p>${t('loadingDesc')}</p></div>`;
+    html += `<div class="empty"><div class="big"></div><h3>${t('loadingTitle')}</h3><p>${t('loadingDesc')}</p></div>`;
   } else if (dbAvailable === false) {
-    html += `<div class="empty"><div class="big">⚠️</div><h3>${t('dbErrorTitle')}</h3><p>${t('dbErrorDesc')}</p></div>`;
+    html += `<div class="empty"><div class="big"></div><h3>${t('dbErrorTitle')}</h3><p>${t('dbErrorDesc')}</p></div>`;
   } else if (list.length === 0) {
-    html += `<div class="empty"><div class="big">🌱</div><h3>${t('emptyBrowseTitle')}</h3><p>${t('emptyBrowseDesc')}</p></div>`;
+    html += `<div class="empty"><div class="big"></div><h3>${t('emptyBrowseTitle')}</h3><p>${t('emptyBrowseDesc')}</p></div>`;
   } else {
     html += `<div class="section-label">${t('resultsCount', list.length)}</div>`;
     html += list.map(l => listingCardHtml(l)).join("");
@@ -536,7 +535,7 @@ function closeDetail() { $("#detailOverlay").classList.remove("open"); }
 /* ============ POST VIEW ============ */
 function renderPost() {
   if (!authReady) {
-    mainEl.innerHTML = `<div class="empty"><div class="big">⏳</div><h3>${t('loadingTitle')}</h3></div>`;
+    mainEl.innerHTML = `<div class="empty"><div class="big"></div><h3>${t('loadingTitle')}</h3></div>`;
     return;
   }
   if (!authUser) {
@@ -625,7 +624,7 @@ function renderPost() {
         <button class="btn-primary" type="submit" id="submitBtn">${t('publishBtn')}</button>
         <div class="status-msg" id="postStatus">${dbAvailable===false ? t('dbUnavailablePost') : ''}</div>
       </form>
-      ` : `<div class="empty"><div class="big">👆</div><p>${t('postCatPrompt')}</p></div>`}
+      ` : `<div class="empty"><div class="big"></div><p>${t('postCatPrompt')}</p></div>`}
     </div>
   `;
 
@@ -791,9 +790,9 @@ function renderMine() {
     </div>
     <div class="section-label">${t('mineHeading', mine.length)}</div>`;
   if (!dbReady) {
-    html += `<div class="empty"><div class="big">⏳</div><h3>${t('loadingTitle')}</h3></div>`;
+    html += `<div class="empty"><div class="big"></div><h3>${t('loadingTitle')}</h3></div>`;
   } else if (mine.length === 0) {
-    html += `<div class="empty"><div class="big">📭</div><h3>${t('mineEmptyTitle')}</h3><p>${t('mineEmptyDesc')}</p></div>`;
+    html += `<div class="empty"><div class="big"></div><h3>${t('mineEmptyTitle')}</h3><p>${t('mineEmptyDesc')}</p></div>`;
   } else {
     html += mine.map(l => `
       <div class="listing" data-c="${l.category}" data-id="${l.id}" style="cursor:default;">
