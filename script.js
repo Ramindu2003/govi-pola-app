@@ -2,7 +2,7 @@
 const CATEGORIES = {
   saththu: { label: "සත්තු", en: "Saththu (Animals)", emoji: "🐄",
     sub: ["Harak (හරක්/එළදෙන)","Eluwo (එළුවෝ)","Kukullan (කුකුළන්)","Uro (ඌරු)","Malu (මාළු)","Meemas (මීමැස්සන්)"] },
-  kama: { label: "සත්තු කෑම", en: "Kama (Feed)", emoji: "🌾",
+  kama: { label: "සත්ව ආහාර", en: "Feed", emoji: "🌾",
     sub: ["Thanacola","Bada Iringu","Kukulu Kama","Vitamin / Supplements"] },
   nishpadana: { label: "නිෂ්පාදන", en: "Nishpadana (Produce)", emoji: "🥛",
     sub: ["Kiri (කිරි)","Biththara (බිත්තර)","Mee Pani (මී පැණි)","Pohora (පොහොර)"] }
@@ -27,8 +27,8 @@ if (!LANGS.includes(lang)) lang = "si";
 
 const STRINGS = {
   brandName: { si: "ගොවි පොළ", en: "Govi Pola", ta: "கோவி போலா" },
-  tagline: { si: "සත්තු • කෑම • නිෂ්පාදන", en: "Animals • Feed • Produce", ta: "கால்நடைகள் • தீவனம் • விளைபொருள்" },
-  searchPlaceholder: { si: "සත්තු, කෑම, District එකෙන් හොයන්න...", en: "Search animals, feed, district...", ta: "விலங்கு, தீவனம், மாவட்டம் தேடுங்கள்..." },
+  tagline: { si: "සත්තු • සත්ව ආහාර • නිෂ්පාදන", en: "Animals • Feed • Produce", ta: "கால்நடைகள் • தீவனம் • விளைபொருள்" },
+  searchPlaceholder: { si: "සත්තු, සත්ව ආහාර, District එකෙන් හොයන්න...", en: "Search animals, feed, district...", ta: "விலங்கு, தீவனம், மாவட்டம் தேடுங்கள்..." },
   districtAll: { si: "සියලුම Districts", en: "All Districts", ta: "அனைத்து மாவட்டங்களும்" },
   districtLabel: { si: "District", en: "District", ta: "மாவட்டம்" },
   chipAll: { si: "සියල්ල", en: "All", ta: "அனைத்தும்" },
@@ -103,6 +103,8 @@ const STRINGS = {
   authErrWeakPassword: { si: "Password එක අඩුම තරමේ අකුරු 6ක් ඕන.", en: "Password should be at least 6 characters.", ta: "கடவுச்சொல் குறைந்தது 6 எழுத்துக்கள் இருக்க வேண்டும்." },
   authErrWrongPassword: { si: "Email එක හරි password එක වැරදියි.", en: "Wrong email or password.", ta: "மின்னஞ்சல் அல்லது கடவுச்சொல் தவறானது." },
   authErrTooMany: { si: "Try ගොඩක් වුනා — පොඩ්ඩක් ඉඳලා try කරන්න.", en: "Too many attempts — wait a bit and try again.", ta: "பல முயற்சிகள் — சிறிது நேரம் காத்திருந்து முயற்சிக்கவும்." },
+  authErrProviderOff: { si: "Email/Password login eka admin dan enable karala නෑ — Firebase console eken Authentication > Sign-in method > Email/Password enable karanna one.", en: "Email/Password sign-in isn't enabled yet — enable it in Firebase Console under Authentication > Sign-in method.", ta: "மின்னஞ்சல்/கடவுச்சொல் உள்நுழைவு இன்னும் இயக்கப்படவில்லை — Firebase Console-இல் இயக்கவும்." },
+  authErrNetwork: { si: "Internet connection eka check karanna.", en: "Check your internet connection.", ta: "இணைய இணைப்பை சரிபார்க்கவும்." },
   mineSignedOutTitle: { si: "Sign in වෙලා නෑ", en: "Not signed in", ta: "உள்நுழையவில்லை" },
   mineSignedOutDesc: { si: "ඔයාගේ ads බලන්න, මේ artifact එකට sign in වෙන්න ඕන.", en: "Sign in to this artifact to see your own ads.", ta: "உங்கள் விளம்பரங்களை பார்க்க இந்த artifact-இல் உள்நுழையவும்." },
   mineHeading: { si: (n) => `ඔයා දාපු ads (${n})`, en: (n) => `Your ads (${n})`, ta: (n) => `நீங்கள் இட்ட விளம்பரங்கள் (${n})` },
@@ -289,6 +291,8 @@ function friendlyAuthError(e) {
     "auth/user-not-found": "authErrWrongPassword",
     "auth/invalid-credential": "authErrWrongPassword",
     "auth/too-many-requests": "authErrTooMany",
+    "auth/operation-not-allowed": "authErrProviderOff",
+    "auth/network-request-failed": "authErrNetwork",
   };
   return map[code] ? t(map[code]) : (e && e.message) || t("authErrGeneric");
 }
@@ -436,16 +440,13 @@ function renderBrowse() {
         <span>🔍</span>
         <input id="qInput" type="text" placeholder="${escapeAttr(t('searchPlaceholder'))}" value="${escapeAttr(filters.q)}">
       </div>
-      <button class="icon-btn ${filterPanelOpen ? 'active' : ''}" id="filterToggle">⚙️</button>
     </div>
-    <div class="filter-panel ${filterPanelOpen ? 'open':''}" id="filterPanel">
-      <div>
-        <label>${t('districtLabel')}</label>
-        <select id="districtSel">
-          <option value="">${t('districtAll')}</option>
-          ${DISTRICTS.map(d => `<option value="${d}" ${filters.district===d?'selected':''}>${d}</option>`).join("")}
-        </select>
-      </div>
+    <div class="district-row">
+      <span class="district-ic">📍</span>
+      <select id="districtSel" class="district-select">
+        <option value="">${t('districtAll')}</option>
+        ${DISTRICTS.map(d => `<option value="${d}" ${filters.district===d?'selected':''}>${d}</option>`).join("")}
+      </select>
     </div>
     <div class="chip-row" id="catChips">
       <div class="chip ${filters.cat==='all'?'on':''}" data-c="all">${t('chipAll')}</div>
@@ -470,7 +471,6 @@ function renderBrowse() {
   $("#qInput").focus({preventScroll:true});
   // restore cursor position after re-render
   const qi = $("#qInput"); if (qi) { const v = qi.value; qi.value=""; qi.value=v; }
-  $("#filterToggle").addEventListener("click", () => { filterPanelOpen = !filterPanelOpen; renderBrowse(); });
   const distSel = $("#districtSel");
   if (distSel) distSel.addEventListener("change", e => { filters.district = e.target.value; renderBrowse(); });
   $$("#catChips .chip").forEach(c => c.addEventListener("click", () => { filters.cat = c.dataset.c; renderBrowse(); }));
