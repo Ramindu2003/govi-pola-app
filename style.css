@@ -112,6 +112,13 @@
   .lang-select option { color: var(--ink); background: var(--bg-elevated); }
 
   main { max-width: 620px; margin: 0 auto; padding: 16px 14px 96px; min-height: 60vh; }
+  #main.view-fade { animation: viewFade .32s ease both; }
+  @keyframes viewFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes cardIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .listing, .card { animation: cardIn .38s cubic-bezier(.22,.68,.36,1) both; }
+  .listing:nth-of-type(1){animation-delay:.02s}.listing:nth-of-type(2){animation-delay:.06s}
+  .listing:nth-of-type(3){animation-delay:.10s}.listing:nth-of-type(4){animation-delay:.14s}
+  .listing:nth-of-type(5){animation-delay:.18s}.listing:nth-of-type(n+6){animation-delay:.20s}
 
   /* ---------- Search / filter ---------- */
   .search-row { display: flex; gap: 8px; margin-bottom: 12px; }
@@ -135,16 +142,18 @@
   .chip-row { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 12px; scrollbar-width: none; }
   .chip-row::-webkit-scrollbar { display: none; }
   .chip {
-    flex-shrink: 0; padding: 8px 14px; border-radius: 100px; border: 1.5px solid var(--border);
-    background: var(--bg-elevated); color: var(--ink-soft); font-size: 13.5px; font-weight: 600;
+    flex-shrink: 0; padding: 9px 15px; border-radius: 100px; border: 1.5px solid var(--border);
+    background: var(--bg-elevated); color: var(--ink-soft); font-size: 13.5px; font-weight: 700;
     cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px;
-    transition: background .15s, color .15s, border-color .15s;
+    transition: background .18s, color .18s, border-color .18s, box-shadow .18s, transform .18s;
+    box-shadow: 0 1px 3px rgba(43,61,33,0.06);
   }
-  .chip.on { color: #fff; border-color: transparent; }
-  .chip.on[data-c="saththu"] { background: var(--green); }
-  .chip.on[data-c="kama"] { background: var(--gold-dark); }
-  .chip.on[data-c="nishpadana"] { background: var(--clay); }
-  .chip.on[data-c="all"] { background: var(--ink); }
+  .chip:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(43,61,33,0.1); }
+  .chip.on { color: #fff; border-color: transparent; box-shadow: 0 3px 10px rgba(43,61,33,0.22); }
+  .chip.on[data-c="saththu"] { background: linear-gradient(135deg, var(--green), var(--green-dark)); }
+  .chip.on[data-c="kama"] { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); }
+  .chip.on[data-c="nishpadana"] { background: linear-gradient(135deg, var(--clay), #6E4A2E); }
+  .chip.on[data-c="all"] { background: linear-gradient(135deg, var(--ink), var(--green-dark)); }
 
   .district-row {
     display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
@@ -207,22 +216,30 @@
   .field .hint { font-size: 11.5px; color: var(--ink-faint); margin-top: 4px; }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-  .cat-pick { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .cat-pick { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
   .cat-pick button {
-    border: 1.5px solid var(--border); background: var(--bg-sunken); border-radius: var(--radius-s);
-    padding: 12px 6px; text-align: center; cursor: pointer; color: var(--ink-soft); font-weight: 700; font-size: 12.5px;
+    border: 1.5px solid var(--border); background: var(--bg-sunken); border-radius: 14px;
+    padding: 16px 6px; text-align: center; cursor: pointer; color: var(--ink-soft); font-weight: 700; font-size: 12.5px;
+    box-shadow: 0 1px 3px rgba(43,61,33,0.06);
   }
-  .cat-pick button .em { font-size: 20px; display: block; margin-bottom: 4px; }
-  .cat-pick button.sel[data-c="saththu"] { background: var(--green); border-color: var(--green); color: #fff; }
-  .cat-pick button.sel[data-c="kama"] { background: var(--gold-dark); border-color: var(--gold-dark); color: #fff; }
-  .cat-pick button.sel[data-c="nishpadana"] { background: var(--clay); border-color: var(--clay); color: #fff; }
+  .cat-pick button:hover { border-color: var(--gold); }
+  .cat-pick button .em {
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+    width: 42px; height: 42px; border-radius: 50%; background: var(--bg-elevated);
+  }
+  .cat-pick button.sel[data-c="saththu"] { background: linear-gradient(160deg, var(--green), var(--green-dark)); border-color: var(--green); color: #fff; box-shadow: 0 5px 14px rgba(47,82,51,0.32); }
+  .cat-pick button.sel[data-c="kama"] { background: linear-gradient(160deg, var(--gold), var(--gold-dark)); border-color: var(--gold-dark); color: #fff; box-shadow: 0 5px 14px rgba(169,124,30,0.32); }
+  .cat-pick button.sel[data-c="nishpadana"] { background: linear-gradient(160deg, var(--clay), #6E4A2E); border-color: var(--clay); color: #fff; box-shadow: 0 5px 14px rgba(139,94,60,0.32); }
+  .cat-pick button.sel .em { background: rgba(255,255,255,0.22); }
 
   .sub-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
   .sub-chip {
-    padding: 8px 13px; border-radius: 100px; border: 1.5px solid var(--border);
+    padding: 8px 14px; border-radius: 100px; border: 1.5px solid var(--border);
     background: var(--bg-sunken); font-size: 13px; cursor: pointer; color: var(--ink-soft); font-weight: 600;
+    box-shadow: 0 1px 3px rgba(43,61,33,0.05);
   }
-  .sub-chip.sel { background: var(--green); border-color: var(--green); color: #fff; }
+  .sub-chip:hover { border-color: var(--gold); }
+  .sub-chip.sel { background: linear-gradient(135deg, var(--green), var(--green-dark)); border-color: var(--green); color: #fff; box-shadow: 0 3px 10px rgba(47,82,51,0.28); }
 
   .neg-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 13.5px; color: var(--ink-soft); }
   .neg-row input { width: 17px; height: 17px; accent-color: var(--green); }
@@ -242,11 +259,12 @@
   }
 
   .btn-primary {
-    width: 100%; background: var(--green); color: #fff; border: none; border-radius: var(--radius-s);
+    width: 100%; background: linear-gradient(135deg, var(--green), var(--green-dark)); color: #fff; border: none; border-radius: var(--radius-s);
     padding: 14px; font-size: 15.5px; font-weight: 700; cursor: pointer; font-family: "Baloo 2", sans-serif;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.2px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 4px 14px rgba(47,82,51,0.28);
   }
-  .btn-primary:disabled { opacity: 0.55; }
+  .btn-primary:disabled { opacity: 0.55; box-shadow: none; }
   .btn-ghost {
     width: 100%; background: transparent; color: var(--danger); border: 1.5px solid var(--border);
     border-radius: var(--radius-s); padding: 10px; font-size: 13.5px; font-weight: 700; cursor: pointer; margin-top: 8px;
@@ -264,10 +282,15 @@
     flex: 1; background: none; border: none; display: flex; flex-direction: column; align-items: center;
     gap: 3px; padding: 6px 2px; color: var(--ink-faint); font-size: 10.5px; font-weight: 700; cursor: pointer;
   }
-  .nav-btn .ic { font-size: 20px; }
+  .nav-btn .ic {
+    font-size: 20px; width: 38px; height: 30px; display: flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+  }
+  .nav-btn.on .ic { background: var(--green-tint); }
   .nav-btn.on { color: var(--green); }
   :root[data-theme="dark"] .nav-btn.on { color: var(--gold); }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nav-btn.on { color: var(--gold); } }
+  :root[data-theme="dark"] .nav-btn.on .ic { background: var(--gold-tint); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nav-btn.on { color: var(--gold); } :root:not([data-theme="light"]) .nav-btn.on .ic { background: var(--gold-tint); } }
 
   /* ---------- Detail modal ---------- */
   .overlay {
@@ -306,8 +329,8 @@
     flex: 1; border: none; border-radius: var(--radius-s); padding: 13px; font-weight: 700; font-size: 14px;
     cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; font-family: "Baloo 2", sans-serif;
   }
-  .contact-btn.call { background: var(--green); color: #fff; }
-  .contact-btn.wa { background: #3DA854; color: #fff; }
+  .contact-btn.call { background: linear-gradient(135deg, var(--green), var(--green-dark)); color: #fff; box-shadow: 0 4px 12px rgba(47,82,51,0.25); }
+  .contact-btn.wa { background: linear-gradient(135deg, #3DA854, #2C8A42); color: #fff; box-shadow: 0 4px 12px rgba(61,168,84,0.3); }
 
   .toast {
     position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); z-index: 60;
@@ -318,3 +341,28 @@
 
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+  /* ---------- Icon spin (loading states) ---------- */
+  .icon-spin { animation: spin 0.85s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- Press / click feedback ---------- */
+  button, .chip, .listing, .cat-pick button, .sub-chip, .nav-btn, .icon-btn,
+  .contact-btn, .theme-toggle, .lang-select {
+    transition: transform .12s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease, opacity .15s ease;
+  }
+  button:active:not(:disabled), .chip:active, .cat-pick button:active, .sub-chip:active,
+  .nav-btn:active, .icon-btn:active, .contact-btn:active, .theme-toggle:active,
+  .listing:active, .photo-slot:active, .close-x:active {
+    transform: scale(0.94);
+  }
+  .btn-primary:active:not(:disabled) { transform: scale(0.97); }
+  .nav-btn .ic { transition: transform .18s cubic-bezier(.34,1.56,.64,1); }
+  .nav-btn.on .ic { transform: scale(1.12); }
+
+  /* Selecting a category/chip rebuilds the DOM (new element, not a state
+     change), so a CSS transition can't animate between colors. This pop
+     keyframe plays on insertion instead, so the selection still feels
+     intentional rather than an abrupt jump. */
+  @keyframes selPop { 0% { transform: scale(0.9); } 55% { transform: scale(1.05); } 100% { transform: scale(1); } }
+  .cat-pick button.sel, .chip.on, .sub-chip.sel { animation: selPop .3s cubic-bezier(.34,1.56,.64,1); }
